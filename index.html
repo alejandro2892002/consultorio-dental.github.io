@@ -203,17 +203,9 @@ checkVisibility(); // Inicializa para la visibilidad al cargar la página
 
         // Validar que todos los campos están completos
         if (servicio && fecha && whatsapp && correo) {
-            // Crear el mensaje de WhatsApp
-            const mensaje = `*Nueva cita reservada*\n\n*Servicio:* ${servicio}\n*Fecha de Cita:* ${fecha}\n*Número Telefonico:* ${whatsapp}\n*Correo Electrónico:* ${correo}`;
-
-            // Codificar el mensaje para el enlace de WhatsApp
-            const whatsappLink = `https://wa.me/525636312119?text=${encodeURIComponent(mensaje)}`;
-
-            // Redirigir al cliente para abrir WhatsApp con el mensaje predefinido
-            window.location.href = whatsappLink;
 
             // Mostrar un mensaje de éxito (opcional)
-            alert("¡Tu cita ha sido reservada correctamente! Se abrirá WhatsApp para confirmar.");
+            alert("¡Tu cita ha sido reservada correctamente!");
         } else {
             // Mostrar un mensaje si algún campo está vacío
             alert("Por favor, completa todos los campos.");
