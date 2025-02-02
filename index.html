@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Dental</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+<header>Consultorio Dental</header>
+
+<nav>
+    <ul class="menu">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#citas">Reservar Cita</a></li>
+        <li><a href="#especialista">Nuestro Especialista</a></li>
+    </ul>
+</nav>
+
+<section id="bienvenida">
+    <h2>Bienvenido a Nuestro Consultorio Dental</h2>
+    <p>Te ofrecemos servicios de odontología de alta calidad, enfocados en tu salud y bienestar dental. Nuestro equipo de especialistas está aquí para brindarte el mejor tratamiento en cada visita. ¡Sonríe con confianza!</p>
+    <div class="slider">
+        <div class="slide">
+            <img src="dentista2.jpg" alt="Consultorio">
+            <p>Ambiente cómodo y moderno.</p>
+        </div>
+        <div class="slide">
+            <img src="dentista1.jpg" alt="Consultorio">
+            <p>Tratamientos de última generación.</p>
+        </div>
+        <div class="slide">
+            <img src="dentista3.jpg" alt="Consultorio">
+            <p>Atención personalizada en cada consulta.</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="carrusel">
+        <button id="prevServicio">❮</button>
+        <div class="servicio-container">
+            <div class="servicio activo" data-audio="audio-limpieza-dental.mp4">
+                <h3>Limpieza Dental</h3>
+                <p>Eliminamos sarro y placa para una sonrisa saludable.</p>
+                <span>Precio: $500 MXN</span>
+            </div>
+            <div class="servicio" data-audio="audio-blanqueamiento-dental.mp4">
+                <h3>Blanqueamiento Dental</h3>
+                <p>Tratamiento profesional para dientes más blancos.</p>
+                <span>Precio: $1200 MXN</span>
+            </div>
+            <div class="servicio" data-audio="audio-ortodoncia.mp4">
+                <h3>Ortodoncia</h3>
+                <p>Alineamos tu sonrisa con brackets modernos.</p>
+                <span>Precio: Desde $5000 MXN</span>
+            </div>
+            <div class="servicio" data-audio="audio-extraccion-muelas.mp4">
+                <h3>Extracción de Muelas</h3>
+                <p>Extracción segura y sin dolor.</p>
+                <span>Precio: $800 MXN</span>
+            </div>
+            <div class="servicio" data-audio="audio-implantes-dentales.mp4">
+                <h3>Implantes Dentales</h3>
+                <p>Recupera tu sonrisa con implantes de titanio.</p>
+                <span>Precio: Desde $12,000 MXN</span>
+            </div>
+            <div class="servicio" data-audio="audio-diseno-sonrisa.mp4">
+                <h3>Diseño de Sonrisa</h3>
+                <p>Corrección estética para una sonrisa perfecta.</p>
+                <span>Precio: Desde $3,500 MXN Evaluación Gratis</span>
+            </div>
+        </div>
+        <button id="nextServicio">❯</button>
+    </div>
+</section>
+
+<!-- Elemento de audio -->
+<audio id="audio" preload="auto">
+    <!-- El audio se cargará dinámicamente -->
+</audio>
+
+
+<section id="citas">
+    <h2>Reserva tu Cita</h2>
+    <form id="reserva-form">
+        <!-- Campo de selección de servicio -->
+        <label for="servicio">Selecciona el servicio:</label>
+        <select id="servicio" required>
+            <option value="">Elige un servicio</option>
+            <option value="Limpieza Dental">Limpieza Dental</option>
+            <option value="Blanqueamiento Dental">Blanqueamiento Dental</option>
+            <option value="Ortodoncia">Ortodoncia</option>
+            <option value="Extracción de Muelas">Extracción de Muelas</option>
+            <option value="Implantes Dentales">Implantes Dentales</option>
+            <option value="Diseño de Sonrisa">Diseño de Sonrisa</option>
+        </select>
+
+        <!-- Campo de selección de fecha, limitado a no poder retroceder -->
+        <label for="fecha">Selecciona una fecha:</label>
+        <input type="date" id="fecha" required>
+
+<!-- Campo de número de WhatsApp -->
+<label for="whatsapp">Número Telefónico:</label>
+<input type="tel" id="whatsapp" required pattern="[0-9]{10}" placeholder="Ej: 5512345678">
+<small id="error-whatsapp" style="color: red; display: none;">Número inválido</small>
+
+<br>
+
+<!-- Campo de correo electrónico -->
+<label for="correo">Correo Electrónico:</label>
+<input type="email" id="correo" required placeholder="Ej: ejemplo@email.com">
+<small id="error-correo" style="color: red; display: none;">Correo inválido</small>
+
+<br><br>
+
+<button type="submit" id="enviar">Reservar Cita</button>
+
+    </form>
+</section>
+
+
+
+
+<section id="especialista">
+    <h2 id="especialistatxt">Nuestro Especialista</h2>
+    <div class="perfil">
+        <img src="dentistadr.png" alt="Dentista Especialista">
+        <h3>Dr. Alejandro Gómez</h3>
+        <p>Especialista en ortodoncia y estética dental.</p>
+        <p>Certificado por la Asociación Dental Mexicana.</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Consultorio Dental. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".menu");
+
+    toggleButton.addEventListener("click", function() {
+        menu.classList.toggle("show"); // Alterna la visibilidad del menú
+    });
+});
+
+// Detecta si el elemento está en el viewport
+function checkVisibility() {
+    const especialista = document.getElementById("especialista");
+    const rect = especialista.getBoundingClientRect();
+    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+        especialista.classList.remove("out"); // Mostrar la imagen
+    } else {
+        especialista.classList.add("out"); // Ocultar la imagen
+    }
+}
+
+// Llama a la función cuando el usuario haga scroll
+window.addEventListener('scroll', checkVisibility);
+checkVisibility(); // Inicializa para la visibilidad al cargar la página
+
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Agregamos una clase al body o al elemento que queremos animar, para que la animación ocurra solo al cargar.
+    const bienvenida = document.getElementById('bienvenida');
+    const header = document.querySelector('header');
+
+    // Agregar la animación solo una vez al cargar la página
+    bienvenida.classList.add('animado');
+    header.classList.add('animado');
+});
+
+</script>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+    // Establecer el valor mínimo del campo de fecha a la fecha actual
+    const fechaInput = document.getElementById("fecha");
+    const today = new Date();
+    const todayString = today.toISOString().split("T")[0]; // Formato YYYY-MM-DD
+    fechaInput.setAttribute("min", todayString);
+
+    // Obtener el formulario y añadir un event listener para el envío
+    const form = document.getElementById("reserva-form");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita el comportamiento por defecto de enviar el formulario
+
+        // Obtener los valores del formulario
+        const servicio = document.getElementById("servicio").value;
+        const fecha = document.getElementById("fecha").value;
+        const whatsapp = document.getElementById("whatsapp").value;
+        const correo = document.getElementById("correo").value;
+
+        // Validar que todos los campos están completos
+        if (servicio && fecha && whatsapp && correo) {
+            // Crear el mensaje de WhatsApp
+            const mensaje = `*Nueva cita reservada*\n\n*Servicio:* ${servicio}\n*Fecha de Cita:* ${fecha}\n*Número Telefonico:* ${whatsapp}\n*Correo Electrónico:* ${correo}`;
+
+            // Codificar el mensaje para el enlace de WhatsApp
+            const whatsappLink = `https://wa.me/525636312119?text=${encodeURIComponent(mensaje)}`;
+
+            // Redirigir al cliente para abrir WhatsApp con el mensaje predefinido
+            window.location.href = whatsappLink;
+
+            // Mostrar un mensaje de éxito (opcional)
+            alert("¡Tu cita ha sido reservada correctamente! Se abrirá WhatsApp para confirmar.");
+        } else {
+            // Mostrar un mensaje si algún campo está vacío
+            alert("Por favor, completa todos los campos.");
+        }
+    });
+});
+
+</script>
+
+
+<script>
+    document.getElementById("enviar").addEventListener("click", function(event) {
+        let valido = true;
+
+        // Validación del número de WhatsApp
+        let whatsapp = document.getElementById("whatsapp").value;
+        let regexWhatsApp = /^[0-9]{10}$/; // Solo 10 dígitos numéricos
+        if (!regexWhatsApp.test(whatsapp)) {
+            document.getElementById("error-whatsapp").style.display = "block";
+            valido = false;
+        } else {
+            document.getElementById("error-whatsapp").style.display = "none";
+        }
+
+        // Validación del correo electrónico
+        let correo = document.getElementById("correo").value;
+        let regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!regexCorreo.test(correo)) {
+            document.getElementById("error-correo").style.display = "block";
+            valido = false;
+        } else {
+            document.getElementById("error-correo").style.display = "none";
+        }
+
+        if (!valido) {
+            event.preventDefault(); // Evita que el formulario se envíe si hay errores
+        }
+    });
+</script>
+
+
+</body>
+</html>
